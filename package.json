@@ -4,18 +4,21 @@
   "description": "music player with react and express",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "node ./scripts/start.js",
     "build": "tsc",
-    "dev": "ts-node ./lib/server.ts",
+    "dev": "concurrently \"ts-node ./lib/server.ts\" \"npm run client\"",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start"
   },
   "author": "Miles Perkins",
   "license": "MIT",
   "dependencies": {
+    "@types/cors": "^2.8.4",
     "@types/express": "^4.16.1",
     "async": "^2.6.2",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "music-metadata": "^3.5.2",
     "nodemon": "^1.18.10",

@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as async from "async";
 import * as mm from "music-metadata";
 import * as path from "path";
+import * as util from "util";
 
 const validExtentions = [".mp3", ".wav"];
 
@@ -16,6 +17,9 @@ export class MusicController {
     async.each(files, (file, cb) => {
       if (validExtentions.includes(path.extname(file))) {
         mm.parseFile(path.resolve(`./music/${file}`)).then(metadata => {
+          console.log(
+            util.inspect(metadata, { showHidden: false, depth: null })
+          );
           songs.push(metadata);
           console.log(songs);
           cb();

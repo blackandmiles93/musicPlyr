@@ -2,6 +2,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Routes } from "./routes/musicRoute";
+import * as cors from "cors";
 
 class App {
   public app: express.Application;
@@ -16,6 +17,7 @@ class App {
   private config(): void {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(express.static("musicplayrclient/public/index.html"));
     this.app.use("/music", express.static("music"));
   }
 }
