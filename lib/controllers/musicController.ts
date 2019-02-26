@@ -21,7 +21,6 @@ export class MusicController {
             util.inspect(metadata, { showHidden: false, depth: null })
           );
           songs.push(metadata);
-          console.log(songs);
           cb();
         });
       }

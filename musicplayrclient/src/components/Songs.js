@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 
+const myHeaders = new Headers({
+  "Content-Type": "application/json",
+  mode: "no-cors"
+});
+
 class Songs extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +14,10 @@ class Songs extends Component {
   }
   componentDidMount() {
     // fetch call to musicPlyr backend
-    fetch("http://localhost:5000/music")
+    fetch("http://localhost:5000/music", myHeaders)
       .then(res => res.json())
-      .then(data => this.setState({ songs: data.songs }));
+      .then(data => this.setState({ songs: data.songs }))
+      .catch(error => console.log(error));
   }
   // Render a list of html audio elements for each song
   render() {
